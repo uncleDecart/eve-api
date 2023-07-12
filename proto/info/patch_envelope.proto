@@ -1,0 +1,63 @@
+// Copyright(c) 2023 Zededa, Inc.
+// SPDX-License-Identifier: Apache-2.0
+
+syntax = "proto3";
+
+package org.lfedge.eve.info;
+option go_package = "github.com/lf-edge/eve/api/go/info";
+option java_package = "org.lfedge.eve.info";
+
+enum EvePatchEnvelopeState {
+    EVE_PATCH_ENVELOPE_STATE_UNKOWN = 0;
+
+    // There is an error with config or during download
+    //  or verification failed
+    EVE_PATCH_ENVELOPE_STATE_ERROR = 1;
+
+    // Configuration received but no downloads started
+    EVE_PATCH_ENVELOPE_STATE_RECIEVED = 2;
+
+    // Artifact/Volume download started
+    // One or more of the artifacts are being downloaded
+    EVE_PATCH_ENVELOPE_STATE_DOWNLOADING = 3;
+
+    // All downloads finished, verified and added to
+    // content tree
+    EVE_PATCH_ENVELOPE_STATE_DOWNLOADED = 4;
+
+    // Patch envelope ready for application instances
+    // application instances will still not be
+    // allowed to fetch the patch envelope contents
+    EVE_PATCH_ENVELOPE_STATE_READY = 5;
+
+    // Application instances are now allowed to fetch
+    // contents
+    EVE_PATCH_ENVELOPE_STATE_ACTIVE = 6;
+}
+
+enum EveOpaqueStatusAction {
+    // Controller ignores the opaque status field
+    EVE_OPAQUE_STATUS_ACTION_IGNORE = 0;
+
+    // Controller overwrites any existing opaque
+    // status with the content of opaque status sent
+    // in info message
+    EVE_OPAQUE_STATUS_ACTION_OVERWRITE = 1;
+}
+
+message ZInfoPatchEnvelope {
+    string name = 1;
+    string id = 2;
+    string version = 3;
+    EvePatchEnvelopeState state = 4;
+    // Size of PatchEnvelope in bytes
+    uint64 size = 5;
+    repeated string errors = 6;
+}
+
+message ZInfoOpaqueAppInstanceStatus {
+    string appId = 1;
+    string appName = 2;
+    EveOpaqueStatusAction opaqueStatusAction = 3;
+    bytes opaqueStatus = 4;
+}

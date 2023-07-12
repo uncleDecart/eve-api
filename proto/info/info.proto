@@ -6,6 +6,7 @@ syntax = "proto3";
 import "google/protobuf/timestamp.proto";
 import "evecommon/devmodelcommon.proto";
 import "evecommon/evecommon.proto";
+import "info/patch_envelope.proto";
 
 package org.lfedge.eve.info;
 option go_package  = "github.com/lf-edge/eve-api/go/info";
@@ -1126,6 +1127,8 @@ message ZInfoMsg {
     ZInfoEdgeview evinfo = 17;
     ZInfoHardware hwinfo = 18;
     ZInfoLocation locinfo = 19;
+    ZInfoPatchEnvelope patchInfo = 20;
+    ZInfoOpaqueAppInstanceStatus opaqueAppInstStatus = 21;
   }
   google.protobuf.Timestamp atTimeStamp = 6;
 }
@@ -1208,3 +1211,4 @@ message ZInfoLocation {
   // label from the modem's PhysicalIO entry.
   string logicallabel = 9;
 }
+

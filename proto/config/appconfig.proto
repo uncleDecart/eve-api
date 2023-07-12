@@ -203,6 +203,16 @@ message AppInstanceConfig {
 
   // SnapshotConfig is used to track the snapshots of the app instance
   SnapshotConfig snapshot = 22;
+
+  // PatchEnvelopeRef is used to track all patch envelopes used by the app instance
+  PatchEnvelopeRef patchRef = 23;
+}
+
+message PatchEnvelopeRef {
+  // one of them should be non-empty
+  // non-empty name overrides the id
+  string name = 23;
+  string id = 24;
 }
 
 // Reference to a Volume specified separately in the API

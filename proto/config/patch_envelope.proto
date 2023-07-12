@@ -1,0 +1,75 @@
+// Copyright(c) 2023 Zededa, Inc.
+// All rights reserved
+
+syntax = "proto3";
+
+package org.lfedge.eve.config;
+option go_package = "github.com/lf-edge/eve/api/go/config";
+option java_package = "org.lfedge.eve.config";
+
+import "google/protobuf/timestamp.proto";
+
+import "config/acipherinfo.proto";
+import "config/storage.proto";
+
+enum EveOpaqueObjectCategory {
+    EVE_OPAQUE_OBJECT_CATEGORY_UNKOWN = 0;
+    EVE_OPAQUE_OBJECT_CATEGORY_BASE64 = 1;
+    EVE_OPAQUE_OBJECT_CATEGORY_BINARYBLOB = 2;
+    EVE_OPAQUE_OBJECT_CATEGORY_SECRET = 3;
+}
+
+message EveOpaqueBase64Data {
+    bool encrypted = 1;
+    oneof textData {
+        string base64ClearTextData = 2;
+        // base 64 encoded and then encrypted
+        CipherBlock base64CipherTextData = 3;
+    }
+
+    oneof base64MetaData {
+        string base64ClearTextMetaData = 4;
+        CipherBlock base64CipherTextMetaData = 5;
+    }
+}
+
+message EveOpaqueBinaryBlob {
+    // Target field of Volume set to AppCustom
+    Volume opaqueVolume = 1;
+}
+
+message EveBinaryArtifact {
+    // base64 or binary blob only - secret type is invalid
+    EveOpaqueObjectCategory format = 1;
+
+    oneof script {
+        EveOpaqueBase64Data base64Artifact = 2;
+        EveOpaqueBinaryBlob binaryArtifact = 3;
+    }
+
+    optional string artifactMetaData = 4;
+}
+
+enum EvePatchEnvelopeAction {
+    EVE_PATCH_ENVELOPE_ACTION_STORE = 0;
+    EVE_PATCH_ENVELOPE_ACTION_ACTIVATE = 1;
+}
+
+message EvePatchEnvelope {
+    // Unique name provided by user
+    string displayName = 1;
+    // Unique 
+    string uuid = 2;
+    // artibtraty versoin from user
+    optional string version = 3;
+    // way this object should be treated
+    EvePatchEnvelopeAction action = 4;
+    repeated EveBinaryArtifact artifacts = 5;
+    
+    // List of application instance ids that should
+    // be allowed to access this patch envelope
+    repeated string appInstIdsAllowed = 6;
+
+    // Time object created in UTC format
+    google.protobuf.Timestamp createTime = 7;
+}

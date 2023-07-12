@@ -18,6 +18,7 @@ import "config/netconfig.proto";
 import "config/netinst.proto";
 import "config/storage.proto";
 import "config/edgeview.proto";
+import "config/patch_envelope.proto";
 
 import "certs/certs.proto";
 import "auth/auth.proto";
@@ -163,6 +164,7 @@ message EdgeDevConfig {
 
   // Configuration of the Local Operator Console (LOC)
   LOCConfig loc_config = 41;
+  repeated EvePatchEnvelope patchEnvelopes = 42;
 }
 
 message ConfigRequest {
