@@ -918,6 +918,8 @@ message ZInfoApp {
   repeated ZInfoNetwork network = 16;       // up/down; allocated IP
   repeated string volumeRefs = 17;          // volume UUIDs
   repeated ZInfoSnapshot snapshots = 18;    // optional field, used to send list of snapshots on device
+    // optional; information about usage of every patchEnvelope assigned to app
+  repeated ZInfoPatchEnvelopeUsage patchEnvelope = 19; 
 }
 
 // ipSec state information

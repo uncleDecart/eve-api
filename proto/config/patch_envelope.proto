@@ -9,50 +9,57 @@ option java_package = "org.lfedge.eve.config";
 
 import "google/protobuf/timestamp.proto";
 
-import "evecommon/acipherinfo.proto";
-import "config/storage.proto";
-
-enum EveOpaqueObjectCategory {
-    EVE_OPAQUE_OBJECT_CATEGORY_UNKOWN = 0;
-    EVE_OPAQUE_OBJECT_CATEGORY_BASE64 = 1;
-    EVE_OPAQUE_OBJECT_CATEGORY_BINARYBLOB = 2;
-    EVE_OPAQUE_OBJECT_CATEGORY_SECRET = 3;
+enum EVE_OPAQUE_OBJECT_CATEGORY {
+    UNKOWN = 0;
+    BASE64 = 1;
+    BINARYBLOB = 2;
+    SECRET = 3;
 }
 
-message EveOpaqueBase64Data {
-    bool encrypted = 1;
-    oneof textData {
-        string base64ClearTextData = 2;
-        // base 64 encoded and then encrypted
-        org.lfedge.eve.common.CipherBlock base64CipherTextData = 3;
-    }
+message InlineOpaqueBase64Data {
+    // base64 encoded data
+    string base64Data = 1;
 
-    oneof base64MetaData {
-        string base64ClearTextMetaData = 4;
-        org.lfedge.eve.common.CipherBlock base64CipherTextMetaData = 5;
-    }
+    // file name to be used for storing this data
+    // same file name shall be advertised to application agent
+    string fileNameToUse = 2;
+
+    // any arbitraty metadata encoded to base64 string
+    optional string base64MetaData = 3;
 }
 
-message EveOpaqueBinaryBlob {
+message ExternalOpaqueBinaryBlob {
+    // Name of the image uploaded into data store
+    string imageName = 1;
+
+    // file name to be used for storing this data in EVE
+    // the same file name shall be advertised to application agent
+    // if it's empty EVE will use image name
+    optional string fileNameToUse = 2;
+
+    // can be image type or size encoded into a single string
+    optional string blobMetaData = 3;
+
     // Target field of Volume set to AppCustom
-    Volume opaqueVolume = 1;
+    // reffers to UUID of a volume
+    string imageId = 4;
 }
 
 message EveBinaryArtifact {
     // base64 or binary blob only - secret type is invalid
-    EveOpaqueObjectCategory format = 1;
+    EVE_OPAQUE_OBJECT_CATEGORY format = 1;
 
-    oneof script {
-        EveOpaqueBase64Data base64Artifact = 2;
-        EveOpaqueBinaryBlob binaryArtifact = 3;
+    oneof binaryBlob {
+        InlineOpaqueBase64Data inline = 2;
+        ExternalOpaqueBinaryBlob volumeRef = 3;
     }
 
     optional string artifactMetaData = 4;
 }
 
-enum EvePatchEnvelopeAction {
-    EVE_PATCH_ENVELOPE_ACTION_STORE = 0;
-    EVE_PATCH_ENVELOPE_ACTION_ACTIVATE = 1;
+enum EVE_PATCH_ENVELOPE_ACTION {
+    STORE = 0;
+    ACTIVATE = 1;
 }
 
 message EvePatchEnvelope {
@@ -60,10 +67,10 @@ message EvePatchEnvelope {
     string displayName = 1;
     // Unique 
     string uuid = 2;
-    // artibtraty versoin from user
+    // arbitrary version from user
     optional string version = 3;
     // way this object should be treated
-    EvePatchEnvelopeAction action = 4;
+    EVE_PATCH_ENVELOPE_ACTION action = 4;
     repeated EveBinaryArtifact artifacts = 5;
     
     // List of application instance ids that should
