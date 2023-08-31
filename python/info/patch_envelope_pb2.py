@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x19info/patch_envelope.proto\x12\x13org.lfedge.eve.info\"\x98\x01\n\x12ZInfoPatchEnvelope\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0f\n\x07version\x18\x03 \x01(\t\x12\x39\n\x05state\x18\x04 \x01(\x0e\x32*.org.lfedge.eve.info.EvePatchEnvelopeState\x12\x0c\n\x04size\x18\x05 \x01(\x04\x12\x0e\n\x06\x65rrors\x18\x06 \x03(\t\"\x9c\x01\n\x1cZInfoOpaqueAppInstanceStatus\x12\r\n\x05\x61ppId\x18\x01 \x01(\t\x12\x0f\n\x07\x61ppName\x18\x02 \x01(\t\x12\x46\n\x12opaqueStatusAction\x18\x03 \x01(\x0e\x32*.org.lfedge.eve.info.EveOpaqueStatusAction\x12\x14\n\x0copaqueStatus\x18\x04 \x01(\x0c*\xa3\x02\n\x15\x45vePatchEnvelopeState\x12#\n\x1f\x45VE_PATCH_ENVELOPE_STATE_UNKOWN\x10\x00\x12\"\n\x1e\x45VE_PATCH_ENVELOPE_STATE_ERROR\x10\x01\x12%\n!EVE_PATCH_ENVELOPE_STATE_RECIEVED\x10\x02\x12(\n$EVE_PATCH_ENVELOPE_STATE_DOWNLOADING\x10\x03\x12\'\n#EVE_PATCH_ENVELOPE_STATE_DOWNLOADED\x10\x04\x12\"\n\x1e\x45VE_PATCH_ENVELOPE_STATE_READY\x10\x05\x12#\n\x1f\x45VE_PATCH_ENVELOPE_STATE_ACTIVE\x10\x06*d\n\x15\x45veOpaqueStatusAction\x12#\n\x1f\x45VE_OPAQUE_STATUS_ACTION_IGNORE\x10\x00\x12&\n\"EVE_OPAQUE_STATUS_ACTION_OVERWRITE\x10\x01\x42\x39\n\x13org.lfedge.eve.infoZ\"github.com/lf-edge/eve-api/go/infob\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x19info/patch_envelope.proto\x12\x13org.lfedge.eve.info\"\x9b\x01\n\x12ZInfoPatchEnvelope\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0f\n\x07version\x18\x03 \x01(\t\x12<\n\x05state\x18\x04 \x01(\x0e\x32-.org.lfedge.eve.info.EVE_PATCH_ENVELOPE_STATE\x12\x0c\n\x04size\x18\x05 \x01(\x04\x12\x0e\n\x06\x65rrors\x18\x06 \x03(\t\"\x9f\x01\n\x1cZInfoOpaqueAppInstanceStatus\x12\r\n\x05\x61ppId\x18\x01 \x01(\t\x12\x0f\n\x07\x61ppName\x18\x02 \x01(\t\x12I\n\x12opaqueStatusAction\x18\x03 \x01(\x0e\x32-.org.lfedge.eve.info.EVE_OPAQUE_STATUS_ACTION\x12\x14\n\x0copaqueStatus\x18\x04 \x01(\x0c\"u\n\x17ZInfoPatchEnvelopeUsage\x12\x19\n\x11patchApiCallCount\x18\x01 \x01(\x04\x12?\n\x0bpatchStatus\x18\x02 \x03(\x0b\x32*.org.lfedge.eve.info.ZInfoPatchEnvelopeApp\"O\n\x15ZInfoPatchEnvelopeApp\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\x0f\n\x07version\x18\x02 \x01(\t\x12\x17\n\x0ftimesDownloaded\x18\x03 \x01(\x04*\xa1\x01\n\x18\x45VE_PATCH_ENVELOPE_STATE\x12\x10\n\x0cPATCH_UNKOWN\x10\x00\x12\x0f\n\x0bPATCH_ERROR\x10\x01\x12\x12\n\x0ePATCH_RECIEVED\x10\x02\x12\x15\n\x11PATCH_DOWNLOADING\x10\x03\x12\x14\n\x10PATCH_DOWNLOADED\x10\x04\x12\x0f\n\x0bPATCH_READY\x10\x05\x12\x10\n\x0cPATCH_ACTIVE\x10\x06*5\n\x18\x45VE_OPAQUE_STATUS_ACTION\x12\n\n\x06IGNORE\x10\x00\x12\r\n\tOVERWRITE\x10\x01\x42\x39\n\x13org.lfedge.eve.infoZ\"github.com/lf-edge/eve-api/go/infob\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -22,12 +22,16 @@ if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   DESCRIPTOR._serialized_options = b'\n\023org.lfedge.eve.infoZ\"github.com/lf-edge/eve-api/go/info'
-  _globals['_EVEPATCHENVELOPESTATE']._serialized_start=365
-  _globals['_EVEPATCHENVELOPESTATE']._serialized_end=656
-  _globals['_EVEOPAQUESTATUSACTION']._serialized_start=658
-  _globals['_EVEOPAQUESTATUSACTION']._serialized_end=758
+  _globals['_EVE_PATCH_ENVELOPE_STATE']._serialized_start=571
+  _globals['_EVE_PATCH_ENVELOPE_STATE']._serialized_end=732
+  _globals['_EVE_OPAQUE_STATUS_ACTION']._serialized_start=734
+  _globals['_EVE_OPAQUE_STATUS_ACTION']._serialized_end=787
   _globals['_ZINFOPATCHENVELOPE']._serialized_start=51
-  _globals['_ZINFOPATCHENVELOPE']._serialized_end=203
-  _globals['_ZINFOOPAQUEAPPINSTANCESTATUS']._serialized_start=206
-  _globals['_ZINFOOPAQUEAPPINSTANCESTATUS']._serialized_end=362
+  _globals['_ZINFOPATCHENVELOPE']._serialized_end=206
+  _globals['_ZINFOOPAQUEAPPINSTANCESTATUS']._serialized_start=209
+  _globals['_ZINFOOPAQUEAPPINSTANCESTATUS']._serialized_end=368
+  _globals['_ZINFOPATCHENVELOPEUSAGE']._serialized_start=370
+  _globals['_ZINFOPATCHENVELOPEUSAGE']._serialized_end=487
+  _globals['_ZINFOPATCHENVELOPEAPP']._serialized_start=489
+  _globals['_ZINFOPATCHENVELOPEAPP']._serialized_end=568
 # @@protoc_insertion_point(module_scope)
