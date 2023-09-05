@@ -41,7 +41,7 @@ message ExternalOpaqueBinaryBlob {
     optional string blobMetaData = 3;
 
     // Target field of Volume set to AppCustom
-    // reffers to UUID of a volume
+    // refers to UUID of a volume
     string imageId = 4;
 }
 
