@@ -71,6 +71,7 @@ enum ZInfoTypes {
   ZiEdgeview = 12;
   ZiLocation = 13;
   ZiPatchEnvelope = 14;
+  ZiOpaqueAppInstanceStatus = 15;
 }
 
 // Information about assignable I/O adapter bundles

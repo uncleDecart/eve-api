@@ -15,7 +15,7 @@ enum EVE_PATCH_ENVELOPE_STATE {
     PATCH_ERROR = 1;
 
     // Configuration received but no downloads started
-    PATCH_RECIEVED = 2;
+    PATCH_RECEIVED = 2;
 
     // Artifact/Volume download started
     // One or more of the artifacts are being downloaded
