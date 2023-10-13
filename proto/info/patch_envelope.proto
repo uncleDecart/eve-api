@@ -66,8 +66,8 @@ message ZInfoOpaqueAppInstanceStatus {
 message ZInfoPatchEnvelopeUsage {
     // count the number of times app instance called patch APIs
     uint64 patchApiCallCount = 1;
-    // information about every patchEnvelope referred to this app
-    repeated ZInfoPatchEnvelopeApp patchStatus = 2;
+    // information about patchEnvelope referred to this app
+    ZInfoPatchEnvelopeApp patchStatus = 2;
 }
 
 // Statistics on usage of specific patchEnvelope for specific app
