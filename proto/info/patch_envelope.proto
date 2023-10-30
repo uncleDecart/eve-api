@@ -35,16 +35,6 @@ enum EVE_PATCH_ENVELOPE_STATE {
     PATCH_ACTIVE = 6;
 }
 
-enum EVE_OPAQUE_STATUS_ACTION {
-    // Controller ignores the opaque status field
-    IGNORE = 0;
-
-    // Controller overwrites any existing opaque
-    // status with the content of opaque status sent
-    // in info message
-    OVERWRITE = 1;
-}
-
 message ZInfoPatchEnvelope {
     string name = 1;
     string id = 2;
@@ -55,28 +45,15 @@ message ZInfoPatchEnvelope {
     repeated string errors = 6;
 }
 
-message ZInfoOpaqueAppInstanceStatus {
-    string appId = 1;
-    string appName = 2;
-    EVE_OPAQUE_STATUS_ACTION opaqueStatusAction = 3;
-    bytes opaqueStatus = 4;
-}
-
 // Provide information on PatchEnvelope usage per app
 message ZInfoPatchEnvelopeUsage {
-    // count the number of times app instance called patch APIs
-    uint64 patchApiCallCount = 1;
-    // information about patchEnvelope referred to this app
-    ZInfoPatchEnvelopeApp patchStatus = 2;
-}
-
-// Statistics on usage of specific patchEnvelope for specific app
-message ZInfoPatchEnvelopeApp {
     // UUID of PatchEnvelope
     string uuid = 1;
     // Version of PatchEnvelope
     string version = 2;
-    // Number of times this PatchEnvelope
-    // was sucessfully downloaded
-    uint64 timesDownloaded = 3;
+    // count the number of times app instance called patch APIs
+    uint64 patch_api_call_count = 3;
+    // count the number of times app instance actually downloaded
+    // whole patch envelope or part of it
+    uint64 download_count = 4;
 }

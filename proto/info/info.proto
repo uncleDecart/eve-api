@@ -56,12 +56,10 @@ message ZmetVifInfo {
  * Protobuf definitions in this file follow the convention.
  */
 enum ZInfoTypes {
+  reserved 2, 4, 5, 15;
   ZiNop = 0;
   ZiDevice = 1;
-  // deprecated = 2;
   ZiApp = 3;
-  // deprecated = 4;
-  // deprecated = 5;
   ZiNetworkInstance = 6;
   ZiVolume = 7;
   ZiContentTree = 8;
@@ -71,7 +69,6 @@ enum ZInfoTypes {
   ZiEdgeview = 12;
   ZiLocation = 13;
   ZiPatchEnvelope = 14;
-  ZiOpaqueAppInstanceStatus = 15;
 }
 
 // Information about assignable I/O adapter bundles
@@ -1118,6 +1115,7 @@ message ZInfoBlobList {
 // object will replace any attempts to (re)transmit the previous message for
 // that object.
 message ZInfoMsg {
+  reserved 21;
   ZInfoTypes ztype = 1;
   string devId = 2;
   oneof InfoContent {
@@ -1135,7 +1133,6 @@ message ZInfoMsg {
     ZInfoHardware hwinfo = 18;
     ZInfoLocation locinfo = 19;
     ZInfoPatchEnvelope patchInfo = 20;
-    ZInfoOpaqueAppInstanceStatus opaqueAppInstStatus = 21;
   }
   google.protobuf.Timestamp atTimeStamp = 6;
 }
