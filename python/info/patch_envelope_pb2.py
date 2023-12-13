@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x19info/patch_envelope.proto\x12\x13org.lfedge.eve.info\"\x9b\x01\n\x12ZInfoPatchEnvelope\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0f\n\x07version\x18\x03 \x01(\t\x12<\n\x05state\x18\x04 \x01(\x0e\x32-.org.lfedge.eve.info.EVE_PATCH_ENVELOPE_STATE\x12\x0c\n\x04size\x18\x05 \x01(\x04\x12\x0e\n\x06\x65rrors\x18\x06 \x03(\t\"n\n\x17ZInfoPatchEnvelopeUsage\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\x0f\n\x07version\x18\x02 \x01(\t\x12\x1c\n\x14patch_api_call_count\x18\x03 \x01(\x04\x12\x16\n\x0e\x64ownload_count\x18\x04 \x01(\x04*\xa1\x01\n\x18\x45VE_PATCH_ENVELOPE_STATE\x12\x10\n\x0cPATCH_UNKOWN\x10\x00\x12\x0f\n\x0bPATCH_ERROR\x10\x01\x12\x12\n\x0ePATCH_RECEIVED\x10\x02\x12\x15\n\x11PATCH_DOWNLOADING\x10\x03\x12\x14\n\x10PATCH_DOWNLOADED\x10\x04\x12\x0f\n\x0bPATCH_READY\x10\x05\x12\x10\n\x0cPATCH_ACTIVE\x10\x06\x42\x39\n\x13org.lfedge.eve.infoZ\"github.com/lf-edge/eve-api/go/infob\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x19info/patch_envelope.proto\x12\x13org.lfedge.eve.info\"\x9b\x01\n\x12ZInfoPatchEnvelope\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0f\n\x07version\x18\x03 \x01(\t\x12<\n\x05state\x18\x04 \x01(\x0e\x32-.org.lfedge.eve.info.EVE_PATCH_ENVELOPE_STATE\x12\x0c\n\x04size\x18\x05 \x01(\x04\x12\x0e\n\x06\x65rrors\x18\x06 \x03(\t*\xa1\x01\n\x18\x45VE_PATCH_ENVELOPE_STATE\x12\x10\n\x0cPATCH_UNKOWN\x10\x00\x12\x0f\n\x0bPATCH_ERROR\x10\x01\x12\x12\n\x0ePATCH_RECEIVED\x10\x02\x12\x15\n\x11PATCH_DOWNLOADING\x10\x03\x12\x14\n\x10PATCH_DOWNLOADED\x10\x04\x12\x0f\n\x0bPATCH_READY\x10\x05\x12\x10\n\x0cPATCH_ACTIVE\x10\x06\x42\x39\n\x13org.lfedge.eve.infoZ\"github.com/lf-edge/eve-api/go/infob\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -22,10 +22,8 @@ if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   DESCRIPTOR._serialized_options = b'\n\023org.lfedge.eve.infoZ\"github.com/lf-edge/eve-api/go/info'
-  _globals['_EVE_PATCH_ENVELOPE_STATE']._serialized_start=321
-  _globals['_EVE_PATCH_ENVELOPE_STATE']._serialized_end=482
+  _globals['_EVE_PATCH_ENVELOPE_STATE']._serialized_start=209
+  _globals['_EVE_PATCH_ENVELOPE_STATE']._serialized_end=370
   _globals['_ZINFOPATCHENVELOPE']._serialized_start=51
   _globals['_ZINFOPATCHENVELOPE']._serialized_end=206
-  _globals['_ZINFOPATCHENVELOPEUSAGE']._serialized_start=208
-  _globals['_ZINFOPATCHENVELOPEUSAGE']._serialized_end=318
 # @@protoc_insertion_point(module_scope)
