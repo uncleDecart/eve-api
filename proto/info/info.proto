@@ -912,6 +912,8 @@ message ZInfoSnapshot {
 }
 
 message ZInfoApp {
+  reserved 9 to 11, 19; // deprecated
+
   string AppID = 1;
   string appVersion = 2;
 
@@ -920,8 +922,6 @@ message ZInfoApp {
 
   // EVE stopped sending this. Can be removed.
   repeated ZInfoSW softwareList = 8; // XXX to be deprecated in favor of volumeRefs
-  // deprecated = 9;
-  // deprecated = 11;
 
   google.protobuf.Timestamp bootTime = 12;
   repeated ZioBundle assignedAdapters = 13;
@@ -930,8 +930,6 @@ message ZInfoApp {
   repeated ZInfoNetwork network = 16;       // up/down; allocated IP
   repeated string volumeRefs = 17;          // volume UUIDs
   repeated ZInfoSnapshot snapshots = 18;    // optional field, used to send list of snapshots on device
-    // optional; information about usage of every patchEnvelope assigned to app
-  repeated ZInfoPatchEnvelopeUsage patchEnvelope = 19; 
 }
 
 // ipSec state information

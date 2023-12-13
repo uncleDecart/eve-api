@@ -373,6 +373,21 @@ message appMetric {
   repeated appContainerMetric container = 7;
 
   AppMemoryMetric appMemory = 8;
+
+  repeated AppPatchEnvelopeMetric patch_envelope = 9;
+}
+
+// Provide information on PatchEnvelope usage per app
+message AppPatchEnvelopeMetric {
+    // UUID of PatchEnvelope
+    string uuid = 1;
+    // Version of PatchEnvelope
+    string version = 2;
+    // count the number of times app instance called patch APIs
+    uint64 patch_api_call_count = 3;
+    // count the number of times app instance actually downloaded
+    // whole patch envelope or part of it
+    uint64 download_count = 4;
 }
 
 // We track device and app logs separately with these counters.
