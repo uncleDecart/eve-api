@@ -206,6 +206,10 @@ message AppInstanceConfig {
 
   // PatchEnvelopeRef is used to track all patch envelopes used by the app instance
   PatchEnvelopeRef patchRef = 23;
+
+  // allow AppInstance to discover other AppInstances
+  // attached to its network instances
+  bool allow_to_discover = 24;
 }
 
 message PatchEnvelopeRef {
