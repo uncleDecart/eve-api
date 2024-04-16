@@ -55,6 +55,10 @@ message NetworkAdapter {
   // valid vlan id range: 2 - 4093
   // vlan id 1 is implicitly used by linux bridges
   uint32 access_vlan_id = 41;
+
+  // allow AppInstance to discover other AppInstances
+  // attached to this network instance. Default is false
+  bool allow_to_discover = 42;
 }
 
 message WirelessConfig {
