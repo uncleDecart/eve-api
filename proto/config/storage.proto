@@ -161,6 +161,10 @@ message ContentTree {
   // network failure, the download process can fallback to the next datastore
   // in the list.
   repeated string ds_ids_list = 11;
+
+  // To inform the edge-node if the device receiving this content tree is
+  // responsible for content tree download or not.
+  string designated_node_id = 12;
 }
 
 // The protocol that the task will use to access the Volume
