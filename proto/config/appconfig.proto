@@ -210,6 +210,9 @@ message AppInstanceConfig {
 
   // This edge-node UUID for the Designate Node for the Application
   string designated_node_id = 26;
+
+  // Custom resolution applies to VM that is running in FML mode only.
+  string vm_resolution = 27;
 }
 
 message PatchEnvelopeRef {
