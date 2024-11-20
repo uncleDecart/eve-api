@@ -50,6 +50,26 @@ message Adapter {
   org.lfedge.eve.common.PhyIoType type = 1;
   string name = 2;  // Short hand name such as "com" from bundle
   EthVF eth_vf = 3; // Only relevant for PHY_IO_TYPE_PHY_IO_NET_ETH_VF
+
+  // Define the network interface order relative to other directly assigned
+  // network devices and virtual network adapters.
+  // Only applies to (assignable) network adapters, i.e. types: "PhyIoNetEth", "PhyIoNetWLAN",
+  // "PhyIoNetWWAN" and "PhyIoNetEthVF".
+  // The numbering is across both the "Adapter" (direct assignments) and the "NetworkAdapter"
+  // (virtual interfaces) lists for a given "AppInstanceConfig", thus every entry in these
+  // lists, excluding non-networking adapters, must have a unique order number
+  // (when the "enforce_network_interface_order" is enabled, see "VmConfig").
+  // Interface with a lower order value should appear inside the application before
+  // interface with a higher order value.
+  // The implementation of this ordering may depend on the hypervisor. For example,
+  // the hypervisor might virtualize the PCI bus and assign lower PCI addresses to
+  // interfaces with lower order values. But the actual outcome of interface ordering
+  // depends on the application and EVE therefore cannot guarantee desired order.
+  // Since this field was introduced in later versions, older EVE versions do not support
+  // user-defined interface ordering. For backward compatibility, the user-defined
+  // order is applied only if "enforce_network_interface_order" is enabled for the given
+  // application (see "VmConfig", file "vm.proto").
+  uint32 interface_order = 4;
 }
 
 // Information regarding Virtual Function (VF) customisation

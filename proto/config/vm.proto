@@ -80,4 +80,16 @@ message VmConfig {
   bool enable_vnc_shim_vm = 22;
   // Boot mode: Legacy or UEFI
   VmBootMode boot_mode = 23;
+  // Enables enforcement of user-defined ordering for network interfaces.
+  // This applies to both virtual interfaces (specified in the "AppInstanceConfig.interfaces" list)
+  // and directly assigned network adapters (specified in the "AppInstanceConfig.adapters" list
+  // as items of type "PhyIoNetEth", "PhyIoNetWLAN", "PhyIoNetWWAN", and "PhyIoNetEthVF").
+  // Note: Older versions of EVE may not support enforcing the user-defined order
+  // of application network interfaces. The controller can check
+  // "ZInfoDevice.api_capability" to verify if the configured device supports the
+  // API capability "API_CAPABILITY_ENFORCED_NET_INTERFACE_ORDER".
+  // Please beware that EVE's ability to influence the order of VM application interfaces
+  // is limited. Depending on the application's operating system, achieving the desired network
+  // interface order might not be possible.
+  bool enforce_network_interface_order = 24;
 }
